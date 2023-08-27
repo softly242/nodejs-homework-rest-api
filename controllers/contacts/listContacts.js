@@ -2,7 +2,8 @@ const Contact = require('../../models/contacts')
 
 
 const listContacts = async (req, res) => {
-  const result = await Contact.find();
+  const { _id: owner } = req.user;
+  const result = await Contact.find({ owner }).populate("owner", "name email");
   res.json(result);
 }
 

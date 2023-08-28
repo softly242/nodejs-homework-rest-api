@@ -29,7 +29,12 @@ const loginSchema = joi.object({
 
 });
 
+const subSchema = joi.object({
+  subscription: joi.string().valid("starter", "pro", "business"),
+});
+
 module.exports = {
     registerSchema,
-    loginSchema
+  loginSchema,
+  subSchema
 };

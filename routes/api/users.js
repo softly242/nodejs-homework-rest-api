@@ -14,13 +14,13 @@ router.get(
 
 router.post(
   '/logout',
-  validateToken,
+  controllerWrapper(validateToken),
   controllerWrapper(userController.logout)
 )
 
 router.patch(
-  "/",
-  validateToken,
+  "/subscription",
+  controllerWrapper(validateToken),
   validateBody(schemas.subSchema),
   controllerWrapper(userController.updateSubscriptionUser)
 );

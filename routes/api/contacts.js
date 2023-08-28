@@ -26,7 +26,7 @@ router.put(
   controllerWrapper(contactsController.updateContact)
 );
 
-router.patch("/:id/favorite",   validateToken, isValidIdFunc, validateBody(schema.favoriteUpdSchema), controllerWrapper(contactsController.updateFavorite));
+router.patch("/:id/favorite", validateToken, isValidIdFunc, validateBody(schema.favoriteUpdSchema), controllerWrapper(contactsController.updateFavorite));
 
 router.delete("/:id",  validateToken,  isValidIdFunc, controllerWrapper(contactsController.removeContact));
 

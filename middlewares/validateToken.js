@@ -33,6 +33,28 @@ const validateToken = async (req, res, next) => {
   }
 
   next()
-}
+} 
+
+
+/* const validateToken = async (req, res, next) => {
+  const { authorization = "" } = req.headers;
+  const [bearer, token] = authorization.split(" ");
+  if (bearer !== "Bearer") {
+    next(RequestError(401, 'Not authorized'));
+  }
+
+  try {
+    const { id } = jwt.verify(token, JWT_SECRET);
+    const user = await User.findById(id);
+    if (!user) {
+      next(RequestError(401, "User not found"));
+    }
+    req.user = user;
+    next();
+  } catch {
+    next(RequestError(401, 'Not authorized'));
+  }
+};
+ */
 
 module.exports = validateToken

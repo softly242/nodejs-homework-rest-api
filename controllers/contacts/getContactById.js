@@ -9,6 +9,6 @@ const getContactById = async (req, res, next) => {
     throw RequestError(404, 'Not Found')
   }
   res.json(result)
-}
+} 
 
 module.exports = getContactById

@@ -10,7 +10,7 @@ const { validateBody,   isValidIdFunc, validateToken } = require("../../middlewa
 
 const router = express.Router();
 
-router.get("/", validateToken, controllerWrapper(contactsController.listContacts));
+router.get("/",  validateToken, controllerWrapper(contactsController.listContacts));
 
 router.get("/:id",  validateToken,  isValidIdFunc, controllerWrapper(contactsController.getContactById));
 

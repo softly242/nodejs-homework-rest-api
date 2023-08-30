@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const userController = require('../../controllers/users')
-const { validateToken } = require('../../middlewares')
+const { validateToken, upload , validateBody } = require('../../middlewares')
 const { controllerWrapper } = require('../../helpers')
 const schemas = require('../../schemas/auth')
-const validateBody = require('../../middlewares/validateBody')
+
 
 router.get(
   '/current',
@@ -23,6 +23,13 @@ router.patch(
   controllerWrapper(validateToken),
   validateBody(schemas.subSchema),
   controllerWrapper(userController.updateSubscriptionUser)
+);
+
+router.patch(
+  "/avatars",
+  controllerWrapper(validateToken),
+  upload.single("avatars"),
+  controllerWrapper(userController.updateAvatar)
 );
 
 module.exports = router

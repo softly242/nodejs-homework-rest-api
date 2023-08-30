@@ -6,7 +6,6 @@ const { JWT_SECRET } = process.env
 
 
 const validateToken = async (req, res, next) => {
-  console.log(req.headers);
   const authorizationHeader = req.headers.authorization || ''
  
   const [type, token] = authorizationHeader.split(' ')

@@ -9,6 +9,11 @@ const userSchema = new Schema(
       minLength: [6, 'Password should be at least 6 characters!'],
       required: [true, 'Password is required'],
     },
+    name: {
+      type: String,
+      required: [true, 'Name is required'],
+      unique: true,
+    },
     email: {
       type: String,
       match: emailVal,
@@ -27,7 +32,15 @@ const userSchema = new Schema(
     avatarURL: {
       type: String,
       required: true,
-    }
+    },
+    verify: {
+      type: Boolean,
+      default: false,
+    },
+    verificationToken: {
+      type: String,
+      required: [true, 'Verify token is required'],
+    },
   },
   { versionKey: false, timestamps: true }
 )

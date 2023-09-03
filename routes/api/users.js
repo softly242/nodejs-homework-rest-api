@@ -4,6 +4,7 @@ const userController = require('../../controllers/users')
 const { validateToken, upload , validateBody } = require('../../middlewares')
 const { controllerWrapper } = require('../../helpers')
 const schemas = require('../../schemas/auth')
+const controller = require('../../controllers/auth')
 
 
 router.get(
@@ -11,6 +12,9 @@ router.get(
   controllerWrapper(validateToken),
   controllerWrapper(userController.getCurrent)
 )
+
+router.get("/verify/:verificationToken", controllerWrapper(controller.verifyEmail));
+router.post("/verify", validateBody(schemas.verifySchema), controllerWrapper(controller.resendVerifyEmail));
 
 router.post(
   '/logout',

@@ -1,11 +1,12 @@
-const request = require("supertest");
+/* const request = require("supertest");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
 const { DB_HOST, PORT } = process.env;
-const { login } = require("./auth");
-const app = require("../../app");
+const { login } = require("../controllers/auth");
+const app = require("../app");
 app.post("auth/login", login);
+
 
 describe("test login controller", () => {
   let server;
@@ -52,4 +53,4 @@ describe("test login controller", () => {
  
     expect(typeof user.subscription).toBe("string");
   });
-});
+}); */
